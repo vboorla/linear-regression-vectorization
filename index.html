@@ -16,8 +16,8 @@
     <div class="wrapper">
         <h1>Cost Function & Gradient Descent</h1>
         <h2>Minima for the Cost Function! </h2>
-        <p>Alpha<input id="alpha" type="number" value="0.01" />
-            Iterations<input id="iter" type="number" value="10" />
+        <p>Alpha : <input id="alpha" type="number" value="0.01" />
+            Iterations : <input id="iter" type="number" value="10" />
         <input id="startGD" type="button" value="Generate" onclick="startTimer()"/>
         <input id="stopGD" type="button" value="Stop" onclick="stopTimer()"/>
         <input id="flushGD" type="button" value="Flush"  onclick="clearPlots()">
@@ -29,6 +29,9 @@
         <canvas id="gradientDescentChart" class="canvas" width="400" height="450" backgroundColor="#CC7722"></canvas>
         </div>
         <div id="output"></div>    
+        Predict for this x : <input id="x" type="number" value="10" />
+        <input id="hypothesis" type="button" value="Predict Y" onclick="prediction()"/>
+        <div id="ypredict"></div>
     </div>
     <script src="ex1data1.js"></script>
     <script src="script.js"></script>    

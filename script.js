@@ -22,7 +22,7 @@ y = math.eval('trainingSet[:,2]',{trainingSet});
 m = y.length;
 // Part 1: Cost
 
- // Add Intercept Term (Bias Unit)
+ // Add Bias Unit(Intercept)
  // 
 X = math.concat(math.ones([m, 1]).valueOf(), X);
 
@@ -78,7 +78,7 @@ var gradientDescentChart = new Chart(cty, {
 scatterChart.update();
 
 function computeCost() {
-    let m = y.length;
+  let m = y.length;
 
   let predictions = math.eval('X * theta', {
     X,
@@ -90,7 +90,7 @@ function computeCost() {
     y,
   });
   
-  let J = math.eval(`1 / (2 * m) * sum(sqrErrors)`, {
+  let J = math.eval('1 / (2 * m) * sum(sqrErrors)', {
     m,
     sqrErrors,
   });
@@ -133,7 +133,7 @@ function gradientDescent(X, y, theta, ALPHA, ITERATIONS) {
       plotDataGD(i, J);
       plotRLine(ts_plot, theta, datasets);
     }   
-    
+   
     return [thetaZero, thetaOne];
 }
 
@@ -148,8 +148,29 @@ function startTimer() {
     theta = gradientDescent(X, y, theta, ALPHA, ITERATIONS);
 
     console.log('theta: ', theta);
+    
     //output.innerHTML += '<br>J after ' + j + ' iterations : ' + J;
-    output.innerHTML += '<br>h(x) : ' + theta[0] + ' + ' + theta[1] + 'x';
+    output.innerHTML += '<br>h(x) : ' + parseFloat(theta[0]).toFixed(3) + ' + ' + parseFloat(theta[1]).toFixed(3) + 'x<br><br>';
+
+    /*function timeNow(){
+    var d= new Date();
+    console.log(d.toLocaleTimeString())
+;}
+    return timer;*/
+}
+
+function prediction() {
+    
+    
+    let ITERATIONS = document.getElementById("iter").value;// 1500;
+    let ALPHA = document.getElementById("alpha").value; // 0.01;
+    ypredict.innerHTML = '';
+    //theta = gradientDescent(X, y, theta, ALPHA, ITERATIONS);
+    let xpredict = document.getElementById("x").value; // ;
+    
+    let yprediction = parseFloat(theta[0]) + (parseFloat(theta[1]) * xpredict);
+    //output.innerHTML += '<br>J after ' + j + ' iterations : ' + J;
+    ypredict.innerHTML += '<br><br> Predicted y is : ' + yprediction;
 
     /*function timeNow(){
     var d= new Date();
